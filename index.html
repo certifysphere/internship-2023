@@ -3,10 +3,22 @@
 <head>
 <title>This is my first page</title>
 </head>
+<script>
+    function myFunction(p1, p2) {
+      let result  =  p1 * p2;
+      console.log('inside myFunction, my result : ' + result);
+      alert('inside myFunction, my result : ' + result);
+      document.getElementById("demo").innerHTML = result;
+    }
+    
+    </script>
 <body>
 
 <h1>We will play with javascript</h1>
 <p>This is a paragraph.</p>
+<button type="button" onclick="myFunction(4, 3)">CLick me </button>
+<p id="demo"> </p>
+
 
 </body>
 </html>
