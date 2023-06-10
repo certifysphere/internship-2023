@@ -1,4 +1,5 @@
-# IntershipProject for 2023
+# IntershipProject for 2023 batch
+## Team Name : Web Spiders
 
 
 echo "# internship-2023" >> README.md
