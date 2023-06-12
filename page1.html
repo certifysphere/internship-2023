@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PUBLIC-TOILET-APP</title>
+    <style>
+        .output-box {
+            border: 1px solid blue;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>RESTRO-ROOMS-DETAILS</h1>
+
+    <hr>
+    </hr>
+    <form id="myForm">
+        <label for="name">PUBLIC-TOILET-NAME:</label>
+        <input type="text" id="name" name="name" placeholder="Enter toilet name" required><br><br>
+
+        <label for="city">CITY-NAME:</label>
+        <input type="text" id="city" name="city" placeholder="Enter your city" required><br><br>
+
+        <label for="state">STATE-NAME:</label>
+        <input type="text" id="state" name="state" placeholder="Enter your state" required><br><br>
+
+        <label for="country">COUNTRY-NAME:</label>
+        <input type="text" id="country" name="country" placeholder="Enter your country" required><br><br>
+        <pre>
+           <input type="submit" value="Submit">
+    </pre>
+    </form>
+    <hr>
+    </hr>
+    <div id="output">
+        <h2>Entered Information:</h2>
+        <div class="output-box" id="outputName"></div>
+        <div class="output-box" id="outputCity"></div>
+        <div class="output-box" id="outputState"></div>
+        <div class="output-box" id="outputCountry"></div>
+    </div>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            var name = document.getElementById("name").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var country = document.getElementById("country").value;
+
+            // Display entered information in individual boxes
+            document.getElementById("outputName").textContent = "Name: " + name;
+            document.getElementById("outputCity").textContent = "City: " + city;
+            document.getElementById("outputState").textContent = "State: " + state;
+            document.getElementById("outputCountry").textContent = "Country: " + country;
+
+            // Clear form inputs
+            document.getElementById("myForm").reset();
+        });
+    </script>
+</body>
+
+</html>
