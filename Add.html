@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding a new Toilet information</title>
+    <script type = "text/javascript">  
+        function fun() {  
+            var name=document.getElementById("name").value;
+            var city=document.getElementById("city").value;
+
+           alert (name+" "+city+" is added");  
+        }  
+        </script>
+</head>
+
+<body background="https://c1.wallpaperflare.com/preview/437/822/479/toilet-loo-wc-public-toilet.jpg">
+    <center>
+        <div style="text-align:center; border:2px solid Black; width: 400px; height:500px; margin-top:50px;">
+    <h1 style="font: size 100px;">
+        Add New Toilet
+    </h1><br>
+        <h3>
+            Public Toilet Name:
+        </h3>
+        <input type="text" style="width:200px; height:25px" id="name" name="name"></input><br><br>
+        <h3>
+            City:
+        </h3>
+        <input type="text" style="width:200px; height:25px" id="city" name="city"></input><br><br>
+        <h3>
+            Comment:
+        </h3>
+        <input type="text" style="width:200px; height:50px" ></input><br><br>
+        <input type = "button" value = "Submit" onclick = "fun();" />
+    </div>
+    </center>
+
+</body>
+
+</html>
