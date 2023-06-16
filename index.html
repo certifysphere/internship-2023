@@ -1,12 +1,59 @@
-hello <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PUBLIC TOILET APP</title>
+    <style>
+        .output-box {
+            border: 10px solid black;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <h1>PUBLIC TOILET APP</h1>
+
+    <hr>
+
+    <form id="myForm">
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+
+        <label for="toiletName">TOILET NAME:</label>
+        <input type="text" id="toiletName" toiletName="toiletName" placeholder="Enter toilet name" required><br><br>
+
+        <label for="city">CITY:</label>
+        <input type="text" id="city" name="city" placeholder="Enter city" required><br><br>
+
+        <label for="state">STATE:</label>
+        <input type="text" id="state" name="state" placeholder="Enter state" required><br><br>
+
+        <input type="submit" value="Submit">
+
+        <img src="https://chandigarhmetro.com/wp-content/uploads/2016/12/Untitled-design-60__1482999525_42.104.68.91.jpg" alt="image">
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            var name = document.getElementById("name").value;
+            var toiletName = document.getElementById("toiletName").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+
+            // Show confirmation alert box
+            var message = "Are you sure you want to submit the following details?\n\nName: " + name +"\ntoiletName: " + toiletName+ " \nCity: " + city + "\nState: " + state;
+            if (confirm(message)) {
+                // Proceed with submission
+                document.getElementById("myForm").submit();
+            }
+        });
+    </script>
 </body>
+
 </html>
