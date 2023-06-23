@@ -1,0 +1,59 @@
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1><u>TOILET APP</u></h1>
+    <main>
+
+   
+
+   
+
+    <form id="myForm">
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+
+        <label for="toiletName">TOILET NAME:</label>
+        <input type="text" id="toiletName" toiletName="toiletName" placeholder="Enter toilet name" required><br><br>
+
+        <label for="city">CITY:</label>
+        <input type="text" id="city" name="city" placeholder="Enter city" required><br><br>
+
+        <label for="state">STATE:</label>
+        <input type="text" id="state" name="state" placeholder="Enter state" required><br><br>
+
+        <input type="submit" value="Submit">
+
+        <img src="https://chandigarhmetro.com/wp-content/uploads/2016/12/Untitled-design-60__1482999525_42.104.68.91.jpg" alt="image">
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            var name = document.getElementById("name").value;
+            var toiletName = document.getElementById("toiletName").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+
+            // Show confirmation alert box
+            var message = "Are you sure you want to submit the following details?\n\nName: " + name +"\ntoiletName: " + toiletName+ " \nCity: " + city + "\nState: " + state;
+            if (confirm(message)) {
+                // Proceed with submission
+                document.getElementById("myForm").submit();
+            }
+        });
+    </script>
+     </main>
+</body>
+
+</html>
