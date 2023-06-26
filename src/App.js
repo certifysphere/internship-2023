@@ -15,12 +15,12 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Arun Jain
+          Learn React with Arun Jain.
         </a>
       </header>
     </div>
-  
+
   );
 }
-
+<hr></hr>
 export default App;
