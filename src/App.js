@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
+import { Button, Col, Form, Modal, Row, Table } from 'react-bootstrap';
 
 
 
@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <MainSection />
-      <ListingSection />
 
     </>
   );
@@ -50,13 +49,34 @@ function MainSection() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [formData, setFormData] = useState({
+    email: '',
+    restroomName: '',
+    address: '',
+    landmark: '',
+    gender: ''
+  });
+
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
   const handleSubmit = (event) => {
     console.log('inside handleSubmit method');
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    event.preventDefault();
+
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+    console.log(formData); // Log the selected gender value
+
   };
 
   return (
@@ -80,46 +100,62 @@ function MainSection() {
 
 
                     <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group className="mb-3" controlId="email">
                         <Form.Label>Your email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" name="email" value={formData.email} onChange={handleChange} />
                         <Form.Text className="text-muted">
                           We'll send you a confirmation email when this restroom details are added. we'll never share your email with anyone else.
                         </Form.Text>
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formName">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="Name" />
+                      <Form.Group className="mb-3" controlId="restroomName">
+                        <Form.Label>Restroom Name</Form.Label>
+                        <Form.Control type="text" placeholder="Name" name="restroomName" value={formData.restroomName} onChange={handleChange} />
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formAddress">
+                      <Form.Group className="mb-3" controlId="address">
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" placeholder="Address" />
+                        <Form.Control type="text" placeholder="Address" name="address" value={formData.address} onChange={handleChange} />
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formLandmark">
+                      <Form.Group className="mb-3" controlId="landmark">
                         <Form.Label>Landmark</Form.Label>
-                        <Form.Control type="text" placeholder="Landmark" />
+                        <Form.Control type="text" placeholder="Landmark" name="landmark" value={formData.landmark} onChange={handleChange} />
                       </Form.Group>
 
                       <fieldset>
-                        <Form.Group as={Row} className="mb-3">
+                        <Form.Group as={Row} className="mb-3" controlId="gender">
                           <Form.Label as="legend" column sm={2}>
                             Gender
                           </Form.Label>
                           <Col sm={10}>
                             <Form.Check
                               label="Male"
-                              name="group1"
+                              name="gender"
+                              value="male"
                               type="radio"
                               id="gender"
+                              checked={formData.gender === 'male'}
+                              onChange={handleChange}
+
                             />
                             <Form.Check
                               label="Female"
-                              name="group1"
+                              name="gender"
                               type="radio"
+                              value="female"
                               id="gender"
+                              checked={formData.gender === 'female'}
+                              onChange={handleChange}
+                            />
+                            <Form.Check
+                              label="Other"
+                              name="gender"
+                              type="radio"
+                              value="other"
+                              id="gender"
+                              checked={formData.gender === 'other'}
+                              onChange={handleChange}
                             />
                           </Col>
                         </Form.Group>
@@ -142,10 +178,33 @@ function MainSection() {
           </div>
         </section>
       </main>
+
+      <Table striped bordered hover size="sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{formData.email}</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </Table>
+
+
+
     </>
 
   );
 }
+
 
 function MyButton() {
   const [count, setCount] = useState(0);
