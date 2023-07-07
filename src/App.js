@@ -92,6 +92,14 @@ function MainSection() {
 
   };
 
+  const handleDelete = (index) => {
+    const newCopyList = [...formList];
+    console.log('Delete clicked ' + index);
+    newCopyList.splice(index, 1);
+    console.log('newCopyList' + newCopyList);
+    setFormList(newCopyList);
+  }
+
   return (
     <>
       <main>
@@ -213,7 +221,12 @@ function MainSection() {
               <td>{item.address}</td>
               <td>{item.landmark}</td>
               <td>{item.gender}</td>
-              <td><button  >Delete</button></td>
+              <td>
+                <Button onClick={() => handleDelete(index)} >Delete</Button>
+                <Button  >Edit</Button>
+
+                </td>
+                
             </tr>
           )}
         </tbody>
