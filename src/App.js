@@ -10,11 +10,34 @@ function App() {
   return (
     <>
       <MainSection />
-      <AddRestroomModal />
-    
-
     </>
+  );
+}
 
+function ListingSection() {
+  return (
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -32,6 +55,8 @@ function MainSection() {
     gender: '',
   });
 
+  const [formList, setFormList] = useState([]);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -43,14 +68,33 @@ function MainSection() {
     console.log('inside handleSubmit method');
     event.preventDefault();
 
+    setFormList([...formList, formData])
+
+    setFormData({
+      email: '',
+      restroomName: '',
+      address: '',
+      landmark: '',
+      gender: ''
+    });
+
+    handleClose();
     // const form = event.currentTarget;
     // if (form.checkValidity() === false) {
     //   event.preventDefault();
     //   event.stopPropagation();
     // }
 
-    console.log(FormData);// Log the selected gender value
+    console.log(formList);// Log the selected gender value
   };
+
+  const handleDelete = (index) => {
+    const newCopyList = [...formList];
+    console.log('Delete clicked ' + index);
+    newCopyList.splice(index, 1);
+    console.log('newCopyList' + newCopyList);
+    setFormList(newCopyList);
+  }
 
   return (
     <>
@@ -59,7 +103,7 @@ function MainSection() {
         <section class="py-5 text-center container">
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-              <h1 class="fw-light"> <strong>Public restrooms App</strong></h1>
+              <h1 class="fw-light"> <strong>Public Restroom  App</strong></h1>
               <p class="lead text-body-secondary">Search ,Add public restrooms in your city!!</p>
               <p>
                 <Button variant="primary" onClick={handleShow}>
@@ -147,7 +191,6 @@ function MainSection() {
                   <Modal.Footer>
                   </Modal.Footer>
                 </Modal>
-
               </p>
             </div>
           </div>
@@ -157,27 +200,35 @@ function MainSection() {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th>index</th>
+            <th>email</th>
+            <th>Restroom Name</th>
+            <th>Address</th>
+            <th>landmark</th>
+            <th>Gender</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{formData.email}</td>
-            <td>{formData.restroomName}</td>
-            <td>{formData.landmark}</td>
-            <td>{formData.gender}</td>
-            <td>{formData.Address}</td>
-          </tr>
+          {formList.map((item, index) =>
+            <tr>
+              <td>{index}</td>
+              <td>{item.email}</td>
+              <td>{item.restroomName}</td>
+              <td>{item.address}</td>
+              <td>{item.landmark}</td>
+              <td>{item.gender}</td>
+              <td>
+                <button onClick={() => handleDelete(index)} >Delete </button>
+                <button>Edit</button>
+
+              </td>
+
+            </tr>
+          )}
         </tbody>
       </Table>
-
-
     </>
-
 
   );
 }
@@ -194,6 +245,7 @@ function MyButton() {
     </button>
   );
 }
+
 
 function AddRestroomModal() {
   return (
@@ -217,32 +269,5 @@ function AddRestroomModal() {
   );
 }
 
-
-function ListingSection() {
-  return (
-    <div class="album py-5 bg-body-tertiary">
-      <div class="container">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                  </div>
-                  <small class="text-body-secondary">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default App;
