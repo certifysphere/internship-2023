@@ -44,8 +44,8 @@ function ListingSection() {
 function MainSection() {
   const [show, setShow] = useState(false);
 
-  const handleShow = () => setShow(false);
-  const handleClose = () => setShow(true);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -200,8 +200,8 @@ function MainSection() {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>index</th>
-            <th>email</th>
+            <th>Index</th>
+            <th>Email</th>
             <th>Restroom Name</th>
             <th>Address</th>
             <th>landmark</th>
