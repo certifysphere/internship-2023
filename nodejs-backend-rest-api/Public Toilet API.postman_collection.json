@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "f2fbfe9d-c68c-41d7-ae2b-f7cfd6639391",
+		"name": "Public Toilet API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28689477"
+	},
+	"item": [
+		{
+			"name": "Get All Public Toilets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3004/public-toilets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"public-toilets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Toilet By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/public-toilets/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"public-toilets",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new Toilet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \" Toilet 3\",\n    \"location\": \"Loc3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3004/public-toilets/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"public-toilets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Toilets",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \" Toilet Name 2\",\n    \"location\": \"Locatioan @@ 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/public-toilets/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"public-toilets",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Toilet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/public-toilets/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"public-toilets",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

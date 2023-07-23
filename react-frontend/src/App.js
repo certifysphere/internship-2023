@@ -67,11 +67,25 @@ function MainSection() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const REST_API_URL = "http://localhost:3004";
+
+
+  const handleSubmit = async (event) => {
     console.log('inside handleSubmit method');
     event.preventDefault();
 
-    setFormList([...formList, formData]);
+   // setFormList([...formList, formData]);
+
+    //send formdata to server using backend api
+    const response = await fetch(REST_API_URL + '/public-toilets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    console.info(JSON.stringify(response));
 
     setFormData({
       email: '',
@@ -225,8 +239,8 @@ function MainSection() {
                 <Button onClick={() => handleDelete(index)} >Delete</Button>
                 <Button  >Edit</Button>
 
-                </td>
-                
+              </td>
+
             </tr>
           )}
         </tbody>

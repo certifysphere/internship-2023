@@ -1,10 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+var cors = require('cors')
+
 require('dotenv').config();
 
 const app = express();
 const port = 3004;
+
+//Enable CORS
+app.use(cors())
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -75,12 +80,13 @@ app.get('/public-toilets/:id', (req, res) => {
 //   res.status(201).json(newToilet);
 // });
 
+
 app.post('/public-toilets', async (req, res) => {
   try {
-    const { name, location } = req.body;
+    const { email, restroomName,  address, landmark, gender} = req.body;
 
-    const query = 'INSERT INTO "publicToilets" (name, location) VALUES ($1, $2) RETURNING *';
-    const values = [name, location];
+    const query = 'INSERT INTO "publicToilets" (email, name, address, landmark, gender) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+    const values = [email, restroomName, address, landmark, gender];
 
     const result = await pool.query(query, values);
 
